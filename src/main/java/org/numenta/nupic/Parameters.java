@@ -106,6 +106,7 @@ public class Parameters {
         defaultSpatialParams.put(KEY.MAX_BOOST, 10.0);
         defaultSpatialParams.put(KEY.SP_VERBOSITY, 0);
         defaultSpatialParams.put(KEY.LEARN, true);
+        defaultSpatialParams.put(KEY.SP_ONE_TO_ONE, false);
         DEFAULTS_SPATIAL = Collections.unmodifiableMap(defaultSpatialParams);
         defaultParams.putAll(DEFAULTS_SPATIAL);
         
@@ -226,6 +227,9 @@ public class Parameters {
         DUTY_CYCLE_PERIOD("dutyCyclePeriod", Integer.class),//TODO add range here?
         MAX_BOOST("maxBoost", Double.class), //TODO add range here?
         SP_VERBOSITY("spVerbosity", Integer.class, 0, 10),
+        //// paCLA Extensions //////
+        /* Map the input bits one to one with proximal dendrites */
+        SP_ONE_TO_ONE("spOneToOne", Boolean.class),
         
         ///////////// SpatialPooler / Network Parameter(s) /////////////
         /** Number of cycles to send through the SP before forwarding data to the rest of the network. */

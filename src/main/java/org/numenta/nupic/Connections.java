@@ -213,6 +213,7 @@ public class Connections {
     ///////// paCLA extensions
 
 	  protected double[] paOverlaps;
+      protected boolean spOneToOne = false;
     /**
      * Sets paOverlaps (predictive assist vector) for {@link PASpatialPooler}
      *
@@ -231,6 +232,23 @@ public class Connections {
         return this.paOverlaps;
     }
 
+    /**
+     * Sets spOneToOne (SP columns ff match input) for {@link PASpatialPooler}
+     *
+     * @param spOneToOne
+     */
+    public void setSPOneToOne(boolean spOneToOne) {
+        this.spOneToOne = spOneToOne;
+    }
+
+    /**
+     * Returns spOneToOne (SP columns ff match input) for {@link PASpatialPooler}
+     *
+     * @return
+     */
+    public boolean getSPOneToOne() {
+        return this.spOneToOne;
+    }
     /**
      * Constructs a new {@code Connections} object. Use
      *

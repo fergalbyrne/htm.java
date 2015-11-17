@@ -145,6 +145,15 @@ public class PALayer<T> extends Layer<T> {
     }
 
     /**
+     * Returns spatial pooler
+     *
+     * @return
+     */
+    public SpatialPooler getSpatialPooler() {
+        return spatialPooler;
+    }
+
+    /**
      * Called internally to invoke the {@link SpatialPooler}
      *
      * @param input
@@ -163,7 +172,25 @@ public class PALayer<T> extends Layer<T> {
             throw new IllegalArgumentException(String.format("Input size %d > SP's NumInputs %d",input.length, connections.getNumInputs()));
         }
         spatialPooler.compute(connections, input, feedForwardActiveColumns, sensor == null || sensor.getMetaInfo().isLearn(), isLearn);
-
+        if(verbosity > 0) {
+            /*
+            StringBuilder sb = new StringBuilder("{");
+            for(int i = 0; i < feedForwardActiveColumns.length; i++) {
+                if(i > 0) {
+                    sb.append(i).append(", ");
+                }
+            }
+            sb.append("}");
+            */
+            int active = 0;
+            for(int i = 0; i < feedForwardActiveColumns.length; i++) {
+                if(feedForwardActiveColumns[i] > 0) {
+                    active++;
+                }
+            }
+            System.out.println(String.format("PALayer.feedForwardActiveColumns[%d] %d on",
+                    feedForwardActiveColumns.length, active));
+        }
         return feedForwardActiveColumns;
     }
 

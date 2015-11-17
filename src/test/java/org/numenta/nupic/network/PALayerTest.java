@@ -166,6 +166,17 @@ public class PALayerTest {
         assertTrue(1 == l.getVerbosity());
     }
 
+    @Test
+    public void testSPOneToOne() {
+        Parameters p = NetworkTestHarness.getParameters().copy();
+        Network n = new Network("test",p);
+        PALayer<?> l = new PALayer(n, p);
+        l.connections.setSPOneToOne(true);
+        assertTrue(l.connections.getSPOneToOne());
+
+        l.add(new PASpatialPooler());
+        //assertTrue(1 == l.getVerbosity());
+    }
 
     @Test
     public void testSpatialInput() {

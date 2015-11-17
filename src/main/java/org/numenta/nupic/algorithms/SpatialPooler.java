@@ -720,7 +720,8 @@ public class SpatialPooler {
     public int[] mapPotential(Connections c, int columnIndex, boolean wrapAround) {
         int inputIndex = mapColumn(c, columnIndex);
 
-        TIntArrayList indices = getNeighborsND(c, inputIndex, c.getInputMatrix(), c.getPotentialRadius(), wrapAround);
+        TIntArrayList indices = getNeighborsND(c, inputIndex,
+                c.getInputMatrix(), c.getPotentialRadius(), wrapAround);
         indices.add(inputIndex);
         //TODO: See https://github.com/numenta/nupic.core/issues/128
         indices.sort();
